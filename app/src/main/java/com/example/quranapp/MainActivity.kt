@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,6 +39,7 @@ class MainActivity : ComponentActivity() {
         parseJson()
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     private fun parseJson() {
         val jsonParser = JsonParser(this)
 
@@ -65,7 +69,9 @@ class MainActivity : ComponentActivity() {
                     itemsIndexed(finalList) { index, content ->
                         Row {
                             Text(text = "${surahNameList[wordList[index].surah-1].name} - ${surahNameList[wordList[index].surah-1].translation}",
-                                modifier = Modifier.fillMaxWidth())
+                                modifier = Modifier.fillMaxWidth(),
+
+                            )
                         }
                         Column(
                             modifier = Modifier
