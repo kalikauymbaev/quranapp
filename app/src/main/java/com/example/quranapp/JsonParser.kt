@@ -3,6 +3,7 @@ package com.example.quranapp
 import android.content.Context
 import android.util.Log
 import com.example.quranapp.model.Surah
+import com.example.quranapp.model.SurahInfo
 import com.example.quranapp.model.Word
 import org.json.JSONObject
 import timber.log.Timber
@@ -67,5 +68,31 @@ class JsonParser(private val context: Context) {
             e.printStackTrace()
         }
         return surahList
+    }
+
+    fun parseSurahInfoJson(rawResourceId: Int): List<SurahInfo>{
+        val surahInfoList = mutableListOf<SurahInfo>()
+
+        try {
+            val inputStream: InputStream = context.resources.openRawResource(rawResourceId)
+            val jsonStr = inputStream.bufferedReader().use { it.readText() }
+            val jsonObject = JSONObject(jsonStr)
+
+            for(key in jsonObject.keys()){
+                val item = jsonObject.getJSONObject(key)
+                val name = item.getString("name")
+                val nAyah = item.getInt("nAyah")
+                val revelationOrder = item.getInt("revelationOrder")
+                val type = item.getString("type")
+                val start = item.getInt("start")
+                val end = item.getInt("end")
+                val surahInfo = SurahInfo(name, nAyah, revelationOrder, type, start, end)
+                surahInfoList.add(surahInfo)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return surahInfoList
     }
 }
