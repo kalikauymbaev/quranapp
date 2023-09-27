@@ -1,6 +1,6 @@
 package com.example.quranapp.di
 
-import com.example.quranapp.MainViewModel
+import com.example.quranapp.mvvm.MainViewModel
 import org.koin.dsl.module
 
 

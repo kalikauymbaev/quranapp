@@ -1,4 +1,4 @@
-package com.example.quranapp
+package com.example.quranapp.mvvm
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,14 +7,13 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.ui.Modifier
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -73,7 +72,7 @@ private fun CategoryHeader(
 private fun CategoryItem(
     index: Int,
     categories: AyahModel,
-    ) {
+) {
     FlowRow(
         maxItemsInEachRow = 5,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -83,11 +82,11 @@ private fun CategoryItem(
             Column(
                 modifier = Modifier
                     .background(
-                        colorResource(id = R.color.lightGray),
+                        Color.LightGray,
                         shape = RoundedCornerShape(20)
                     )
                     .padding(10.dp),
-                ) {
+            ) {
                 Text(text = item.arabicLang, textAlign = TextAlign.End)
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -100,12 +99,12 @@ private fun CategoryItem(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp) // Adjust padding as needed
+            .padding(vertical = 8.dp)
     ) {
         Divider(
             modifier = Modifier
-                .height(1.dp), // Adjust height as needed
-            color = Color.Gray // Adjust color as needed
+                .height(1.dp),
+            color = Color.Gray
         )
     }
 }

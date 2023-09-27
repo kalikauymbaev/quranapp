@@ -1,12 +1,10 @@
-package com.example.quranapp
+package com.example.quranapp.extensions
 
 import android.content.Context
-import android.util.Log
 import com.example.quranapp.model.Surah
 import com.example.quranapp.model.SurahInfo
 import com.example.quranapp.model.Word
 import org.json.JSONObject
-import timber.log.Timber
 import java.io.InputStream
 
 class JsonParser(private val context: Context) {

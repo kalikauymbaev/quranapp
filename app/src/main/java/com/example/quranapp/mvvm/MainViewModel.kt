@@ -1,9 +1,11 @@
-package com.example.quranapp
+package com.example.quranapp.mvvm
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.quranapp.R
+import com.example.quranapp.extensions.JsonParser
 import com.example.quranapp.model.Ayah
 import com.example.quranapp.model.AyahModel
 import com.example.quranapp.model.LanguageContext
