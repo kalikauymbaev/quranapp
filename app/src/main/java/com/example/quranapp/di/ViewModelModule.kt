@@ -1,4 +1,4 @@
-package com.example.quranapp.modules
+package com.example.quranapp.di
 
 import com.example.quranapp.MainViewModel
 import org.koin.dsl.module
