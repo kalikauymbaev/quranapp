@@ -4,8 +4,8 @@ import android.content.Context
 import com.example.quranapp.model.Surah
 import com.example.quranapp.model.SurahInfo
 import com.example.quranapp.model.Word
-import org.json.JSONObject
 import java.io.InputStream
+import org.json.JSONObject
 
 class JsonParser(private val context: Context) {
 
@@ -25,14 +25,14 @@ class JsonParser(private val context: Context) {
         return translationMap
     }
 
-    fun parseWordJson(rawResourceId: Int) : List<Word>? {
+    fun parseWordJson(rawResourceId: Int): List<Word>? {
         val wordList = mutableListOf<Word>()
         try {
             val inputStream: InputStream = context.resources.openRawResource(rawResourceId)
             val jsonStr = inputStream.bufferedReader().use { it.readText() }
             val jsonObject = JSONObject(jsonStr)
 
-            for(key in jsonObject.keys()) {
+            for (key in jsonObject.keys()) {
                 val item = jsonObject.getJSONObject(key)
                 val surah = item.getInt("surah")
                 val ayah = item.getInt("ayah")
@@ -42,12 +42,11 @@ class JsonParser(private val context: Context) {
             }
         } catch (e: Exception) {
             e.printStackTrace()
-
         }
         return wordList
     }
 
-    fun parseSurahJson(rawResourceId: Int): List<Surah>{
+    fun parseSurahJson(rawResourceId: Int): List<Surah> {
         val surahList = mutableListOf<Surah>()
 
         try {
@@ -68,7 +67,7 @@ class JsonParser(private val context: Context) {
         return surahList
     }
 
-    fun parseSurahInfoJson(rawResourceId: Int): List<SurahInfo>{
+    fun parseSurahInfoJson(rawResourceId: Int): List<SurahInfo> {
         val surahInfoList = mutableListOf<SurahInfo>()
 
         try {
@@ -76,7 +75,7 @@ class JsonParser(private val context: Context) {
             val jsonStr = inputStream.bufferedReader().use { it.readText() }
             val jsonObject = JSONObject(jsonStr)
 
-            for(key in jsonObject.keys()){
+            for (key in jsonObject.keys()) {
                 val item = jsonObject.getJSONObject(key)
                 val name = item.getString("name")
                 val nAyah = item.getInt("nAyah")

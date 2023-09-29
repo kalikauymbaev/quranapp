@@ -1,6 +1,7 @@
 package com.example.quranapp
 
 import android.app.Application
+import com.example.quranapp.di.getRepositoriesModule
 import com.example.quranapp.di.getViewModelModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -19,6 +20,7 @@ class QuranApp : Application() {
             modules(
                 listOf(
                     getViewModelModules(),
+                    getRepositoriesModule(),
                 )
             )
         }
